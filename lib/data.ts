@@ -135,7 +135,7 @@ export const INSTAGRAM_IMAGES = [
 
 export const CATEGORIES = [
   { name:"Baby Friendly",    icon:"Baby",     image:img("1519415510236-718bdfcd89c8",400), href:"/family-needs/baby-friendly" },
-  { name:"Toddler Approved", icon:"Heart",    image:img("1500995617113-cf789362a3e1",400), href:"/family-needs/toddler" },
+  { name:"Toddler Approved", icon:"TeddyBear",image:img("1500995617113-cf789362a3e1",400), href:"/family-needs/toddler" },
   { name:"Beach Resorts",    icon:"TreePalm", image:img("1507525428034-b723cf961d3e",400), href:"/destinations?type=beach" },
   { name:"Kids Clubs",       icon:"Users",    image:img("1530549387789-4c1017266635",400), href:"/family-needs/kids-clubs" },
   { name:"Luxury Resorts",   icon:"Gem",      image:img("1571003123894-1f0594d2b5d9",400), href:"/destinations?type=luxury" },
