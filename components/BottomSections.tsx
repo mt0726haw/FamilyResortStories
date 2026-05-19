@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Heart, Award, Users, Briefcase, Mail } from "lucide-react";
 import { TRUST_ITEMS, COLORS as C } from "@/lib/data";
+import { useDevice } from "@/hooks/useDevice";
 import Link from "next/link";
 
 // ─── Botanical decoration shared ────────────────────────────────────────────
@@ -30,7 +31,9 @@ function Botanical({ className }: { className?: string }) {
   );
 }
 
-const ICON_MAP: Record<string, React.FC<{ size?: number; strokeWidth?: number; style?: React.CSSProperties }>> = {
+import type { LucideIcon } from "lucide-react";
+
+const ICON_MAP: Record<string, LucideIcon> = {
   Heart, Award, Users, Briefcase,
 };
 
@@ -156,6 +159,21 @@ const FOOTER_COLS = [
   },
 ];
 
+function DeviceBadge() {
+  const d = useDevice();
+  if (!d.mounted) return null;
+  const dot = d.isMobile ? "📱" : d.isTablet ? "📋" : "🖥️";
+  return (
+    <span
+      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-[0.08em] uppercase"
+      style={{ background: "rgba(255,255,255,0.08)", color: "#d9d4c5" }}
+      title={`Detected: ${d.deviceType} · ${d.width}px · ${d.isTouch ? "touch" : "pointer"}`}
+    >
+      {dot} {d.deviceType}
+    </span>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="py-12 lg:py-16" style={{ background: C.ink, color: "#d9d4c5" }}>
@@ -224,9 +242,12 @@ export function Footer() {
         />
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-[11.5px] opacity-55">
-          <div>© {new Date().getFullYear()} Family Resort Stories. All rights reserved.</div>
-          <div className="flex gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-[11.5px] opacity-70">
+          <div className="flex items-center gap-3 opacity-80">
+            <span>© {new Date().getFullYear()} Family Resort Stories. All rights reserved.</span>
+            <DeviceBadge />
+          </div>
+          <div className="flex gap-6 opacity-70">
             {["Privacy", "Terms", "Cookies"].map((l) => (
               <Link key={l} href={`/${l.toLowerCase()}`} className="hover:opacity-100 transition-opacity">
                 {l}

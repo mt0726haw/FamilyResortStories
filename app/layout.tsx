@@ -1,5 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#fdfaf3",
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "Family Resort Stories – Honest Family Resort Reviews",
@@ -21,6 +29,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
   },
+  formatDetection: {
+    telephone: false,
+  },
   alternates: {
     languages: {
       "de-DE": "/de",
@@ -29,11 +40,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="de">
       <head />

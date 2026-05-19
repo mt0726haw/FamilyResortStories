@@ -1,11 +1,10 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export",          // static HTML export for GitHub Pages
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: "export",
   trailingSlash: true,
   basePath: "/FamilyResortStories",
   images: {
-    unoptimized: true,       // required for static export
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
